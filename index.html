@@ -1,0 +1,61 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="parent">
+        <div id="child">
+            HI there 
+        </div>
+    </div>
+    <script>
+        async function fetchapi(){
+            const req = await fetch("https://jsonplaceholder.typicode.com/posts/1")
+            const res = await req.json();
+            console.log(res)
+            const output = document.querySelector("#child").innerHTML = res.body;
+            console.log(output)
+        }
+        fetchapi()
+    </script>
+
+</body>
+</html> -->
+
+
+
+<!--  sending the request with the help of axios library -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.6/axios.min.js"></script> </script>
+</head>
+<body>
+    <div id="post"></div>
+    <button onclick="post()">Fetch all data </button>
+</body>
+<script>
+    async function post(){
+        const request = await axios.get('https://jsonplaceholder.typicode.com/posts/1')
+        
+        const arr = request.data;
+        for(let i = 0 ; i <arr.length ;i++){
+            console.log(arr)
+            document.getElementById('post').innerHTML += `<div> ${arr[i].body} </div>`
+        }
+        
+        console.log(request.data)
+       console.log(request.data.title)
+    }
+
+</script>
+</html>
